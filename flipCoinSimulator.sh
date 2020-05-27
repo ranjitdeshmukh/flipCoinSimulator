@@ -1,12 +1,18 @@
-#!/bin/bash -x
 echo "Welcome Flip Coin Simulation Problem"
 
+ for (( i = 1; i < 100; i++ ));
+  do  	
+  	choice=$((RANDOM % 2 + 1))
+	 if [ $choice -eq "1" ]
+	 then
+	 	flag=`expr $flag + 1`
+	    echo "  heads win"
+	 else
+	 	lag=`expr $lag + 1`
+	    echo "  tails wins	"
+	 fi 
+  done 
 
- choice=$((RANDOM % 2 + 1))
+ echo " heads win $flag"
 
- if [ $choice -eq "1" ]
- then
-    echo "  heads win"
- else
-    echo "  tails wins"
- fi 
+ echo " tails win $lag"
