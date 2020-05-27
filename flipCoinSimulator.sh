@@ -1,5 +1,7 @@
+
 echo "Welcome Flip Coin Simulation Problem"
 
+function checkCoinFlip(){
  for (( i = 1; i < 100; i++ ));
   do  	
   	choice=$((RANDOM % 2 + 1))
@@ -21,9 +23,38 @@ echo "Welcome Flip Coin Simulation Problem"
 	        else
 	        	continue;
 	        fi
-	 fi 
+	 fi	 
   done 
+}
 
- echo " heads win $flag"
+function chckWin(){
+if [ $flag -gt $lag ]; 
+then
+    echo " Heads win $flag"
+    echo " Tails  $lag"
+elif [ $lag -gt $flag ];
+then
+	echo " Tails win $lag"
+	echo " Heads  $flag "
+fi
+}
 
- echo " tails win $lag"
+checkCoinFlip 
+if [ $flag -eq $lag ];
+ then
+ 	echo "Tie Match"
+ 	result=$(( $flag - $lag ))
+ 	if [[ "$result" -eq 2 ]] || [[ "$result" -eq -2 ]] ; 
+ 	then
+ 		chckWin $flag $lag
+ 		break
+ 	else
+ 		checkCoinFlip	
+ 	fi	 
+else
+	chckWin $flag $lag 
+fi
+
+ 
+
+ 
