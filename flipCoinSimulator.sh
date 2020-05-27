@@ -6,10 +6,21 @@ echo "Welcome Flip Coin Simulation Problem"
 	 if [ $choice -eq "1" ]
 	 then
 	 	flag=`expr $flag + 1`
-	    echo "  heads win"
-	 else
-	 	lag=`expr $lag + 1`
-	    echo "  tails wins	"
+	    if [[ "$flag" -eq 21 ]];
+	     then
+	    	break;
+	    else 
+	    	continue;
+	    fi
+	 elif [[ "$choice" -eq 2 ]]; 
+	 	then
+	 	 	lag=`expr $lag + 1`
+	        if [[ "$lag" -eq 21 ]]; 
+	        then
+	        	break;
+	        else
+	        	continue;
+	        fi
 	 fi 
   done 
 
